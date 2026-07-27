@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNNA - Vestidos de Festa - Catálogo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+    
+    :root {
+        --bg-color: #ffffff;
+        --card-bg: #ffffff;
+        --primary-color: #000000;
+        --accent-color: #767676;
+        --border-color: #e5e5e5;
+        --text-main: #000000;
+        --text-muted: #666666;
+        --sold-color: #cccccc;
+        --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.02);
+        --transition: all 0.4s ease;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); -webkit-font-smoothing: antialiased; }
+
+    .marquee-bar { 
+        background-color: var(--primary-color); 
+        color: #ffffff; 
+        padding: 10px 0; 
+        font-size: 11px; 
+        letter-spacing: 0.15em; 
+        font-weight: 400; 
+        text-transform: uppercase; 
+        border-bottom: 1px solid var(--primary-color);
+        overflow: hidden; 
+        white-space: nowrap; 
+        position: relative;
+    }
+    .marquee-content { 
+        display: inline-block; 
+        animation: marquee 25s linear infinite; 
+    }
+    .marquee-content span { margin: 0 20px; }
+    @keyframes marquee {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
+    }
+    
+    /* --- CABEÇALHO SOFISTICADO --- */
+    header { 
+        text-align: center; 
+        padding: 70px 20px 40px 20px; 
+        background-color: #ffffff;
+        position: relative;
+    }
+    
+    header .logo-loja { 
+        max-width: 220px; 
+        height: auto; 
+        display: inline-block; 
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        mix-blend-mode: multiply; 
+        filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.08));
+        cursor: pointer;
+    }
+
+    header .logo-loja:hover {
+        transform: scale(1.03) translateY(-3px);
+        filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.15));
+    }
+
+    header::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #000000, transparent);
+        margin: 35px auto 0 auto;
+        opacity: 0.25;
+    }
+    .catalogo-subtitle {
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.35em; 
+        text-transform: uppercase;
+        color: #666666;
+        margin-top: 18px; 
+        margin-bottom: 0;
+    }
+    
+    header h1 { font-family: 'Cormorant Garamond', serif; font-size: 54px; font-weight: 400; color: var(--primary-color); margin-bottom: 15px; letter-spacing: 0.1em; text-transform: uppercase; }
+    header p { font-size: 13px; color: var(--text-muted); max-width: 500px; margin: 0 auto; font-weight: 300; letter-spacing: 0.05em; line-height: 1.8; }
+    
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 40px 60px 40px; }
+    
+    .controls-wrapper { background-color: #ffffff; padding: 0 0 30px 0; margin-bottom: 40px; border-bottom: 1px solid var(--border-color); }
+    .search-filter-row { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; margin-bottom: 25px; }
+    
+    .search-box { position: relative; flex: 1; max-width: 400px; min-width: 280px; }
+    .search-box input { width: 100%; padding: 12px 16px 12px 40px; border: 1px solid var(--border-color); border-radius: 0px; font-family: 'Inter', sans-serif; font-size: 13px; outline: none; transition: var(--transition); background-color: #ffffff; color: #000000; letter-spacing: 0.03em; }
+    .search-box input:focus { border-color: var(--primary-color); }
+    .search-box svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); width: 15px; height: 15px; stroke-width: 1.5; }
+    
+    .status-filters { display: flex; gap: 0px; border: 1px solid var(--border-color); }
+    .status-btn { background: #ffffff; border: none; padding: 12px 24px; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 400; color: var(--text-muted); transition: var(--transition); letter-spacing: 0.08em; text-transform: uppercase; }
+    .status-btn:not(:last-child) { border-right: 1px solid var(--border-color); }
+    .status-btn.active, .status-btn:hover { background-color: var(--primary-color); color: #ffffff; }
+    
+    .categories-tabs { 
+        display: flex; 
+        gap: 10px; 
+        padding-top: 5px; 
+        overflow-x: auto; 
+        white-space: nowrap; 
+        scrollbar-width: none; 
+        -ms-overflow-style: none; 
+        padding-bottom: 5px;
+    }
+    .categories-tabs::-webkit-scrollbar { display: none; } 
+    
+    .category-tab { 
+        background-color: #ffffff; 
+        border: 1px solid var(--border-color); 
+        padding: 8px 20px; 
+        font-family: 'Inter', sans-serif; 
+        font-size: 11px; 
+        font-weight: 400; 
+        color: var(--text-muted); 
+        cursor: pointer; 
+        transition: var(--transition); 
+        text-transform: uppercase; 
+        letter-spacing: 0.08em; 
+        flex-shrink: 0; 
+    }
+    .category-tab.active, .category-tab:hover { background-color: var(--primary-color); color: #ffffff; border-color: var(--primary-color); }
+    
+    .sizes-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px dashed var(--border-color);
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    .sizes-container::-webkit-scrollbar { display: none; }
+
+    .size-label {
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--primary-color);
+        margin-right: 5px;
+        flex-shrink: 0;
+    }
+
+    .sizes-tabs {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .size-tab { 
+        background-color: #ffffff; 
+        border: 1px solid var(--border-color); 
+        padding: 6px 14px; 
+        font-family: 'Inter', sans-serif; 
+        font-size: 11px; 
+        font-weight: 400; 
+        color: var(--text-muted); 
+        cursor: pointer; 
+        transition: var(--transition); 
+        text-transform: uppercase; 
+        letter-spacing: 0.05em; 
+        flex-shrink: 0; 
+    }
+    .size-tab.active, .size-tab:hover { 
+        background-color: var(--primary-color); 
+        color: #ffffff; 
+        border-color: var(--primary-color); 
+    }
+
+    .results-info-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+    .results-counter { font-size: 12px; color: var(--text-muted); font-weight: 300; letter-spacing: 0.03em; }
+    
+    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px 30px; }
+    
+    .product-card { background-color: var(--card-bg); overflow: hidden; transition: var(--transition); display: flex; flex-direction: column; position: relative; }
+    
+    .product-image-container { position: relative; width: 100%; padding-top: 140%; background-color: #fafafa; overflow: hidden; }
+    
+    /* --- ESTRUTURA DO CARROSSEL DESLIZANTE --- */
+    .carousel-track {
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%;
+        display: flex;
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .carousel-track img {
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        flex-shrink: 0; 
+        filter: grayscale(15%); 
+        transition: filter 0.4s ease; 
+        cursor: zoom-in;
+    }
+    .product-card:hover .carousel-track img { filter: grayscale(0%); }
+
+    /* --- INDICADORES DO CARROSSEL (ESTILO INSTAGRAM STORIES) --- */
+    .carousel-indicators {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 4px;
+        padding: 0 15px;
+        z-index: 10;
+        pointer-events: none;
+    }
+    .indicator-bar {
+        flex: 1;
+        max-width: 25px;
+        height: 3px;
+        background-color: rgba(255, 255, 255, 0.4);
+        border-radius: 2px;
+        transition: background-color 0.4s ease;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    .indicator-bar.active {
+        background-color: #ffffff;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }
+    
+    .card-arrow { display: none !important; }
+
+    /* --- ETIQUETAS E BADGES --- */
+    .badge { position: absolute; padding: 6px 14px; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; z-index: 2; pointer-events: none; }
+    .badge-sale { background-color: #ffffff; color: #000000; top: 15px; left: 15px; border: 1px solid #000000; }
+    .badge-sold { background-color: #000000; color: #ffffff; top: 15px; left: 15px; font-weight: 300; }
+    .badge-discount { background-color: #d93025; color: #ffffff; top: 15px; right: 15px; font-size: 14px; font-weight: 600; padding: 8px 16px; letter-spacing: 0.05em; font-family: 'Inter', sans-serif; box-shadow: 0 4px 12px rgba(217, 48, 37, 0.2); }
+    
+    .badge-destaque { 
+        background-color: #000000; 
+        color: #ffffff; 
+        top: 15px; 
+        left: 15px; 
+        font-size: 9px; 
+        font-weight: 600; 
+        padding: 5px 10px; 
+        letter-spacing: 0.08em; 
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    
+    .product-info { padding: 20px 0 0 0; display: flex; flex-direction: column; flex-grow: 1; }
+    .product-category { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 6px; font-weight: 400; }
+    .product-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; color: var(--text-main); margin-bottom: 8px; line-height: 1.2; text-transform: capitalize; }
+    
+    .product-all-sizes { 
+        font-size: 14px; 
+        color: var(--primary-color); 
+        margin-bottom: 4px; 
+        font-weight: 700; 
+        text-transform: uppercase; 
+        letter-spacing: 0.05em; 
+    }
+    
+    .product-all-colors {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: 12px;
+        font-weight: 500;
+        text-transform: capitalize;
+        letter-spacing: 0.03em;
+    }
+
+    /* --- BOLINHAS DE CORES DIFERENTES --- */
+    .cores-container { display: flex; gap: 8px; margin-bottom: 12px; padding: 4px 6px; overflow-x: auto; }
+    .cor-dot { width: 42px; height: 42px; border-radius: 50%; background-size: cover; background-position: center; cursor: pointer; border: 1px solid var(--border-color); transition: var(--transition); position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .cor-dot:hover { border-color: var(--accent-color); }
+    .cor-dot.active { border-color: var(--primary-color); transform: scale(1.1); box-shadow: 0 0 0 1px var(--primary-color); }
+    
+    .product-size { 
+        font-size: 11px; 
+        letter-spacing: 0.04em; 
+        color: var(--primary-color); 
+        margin-bottom: 18px; 
+        font-weight: 500; 
+        text-transform: uppercase; 
+        background-color: #f7f7f7; 
+        padding: 8px 12px; 
+        border-radius: 4px;
+        border-left: 3px solid var(--primary-color); 
+        display: inline-block;
+        line-height: 1.6;
+    }
+    
+    .destaque-tamanho {
+        font-size: 16px; 
+        font-weight: 800; 
+        color: #000000;
+    }
+    
+    .product-price-container { margin-top: auto; margin-bottom: 20px; display: flex; flex-direction: column; gap: 4px; }
+    .product-price-box { display: flex; align-items: baseline; gap: 12px; }
+    
+    .price-old { font-size: 15px; color: #8a1f1a; text-decoration: line-through; text-decoration-color: #8a1f1a; text-decoration-thickness: 2px; font-weight: 500; opacity: 0.85; }
+    .price-current { font-size: 22px; font-weight: 600; color: var(--text-main); letter-spacing: 0.01em; }
+    .price-avista { font-size: 14px; font-weight: 700; color: #2e7d32; letter-spacing: 0.02em; }
+    
+    @keyframes shimmer-effect {
+        0% { left: -100%; }
+        100% { left: 200%; }
+    }
+    
+    .btn-whatsapp { 
+        position: relative;
+        display: inline-block; 
+        background-color: #000000; 
+        color: #ffffff; 
+        text-decoration: none; 
+        padding: 14px 22px; 
+        font-size: 11px; 
+        font-weight: 600; 
+        letter-spacing: 0.15em; 
+        text-transform: uppercase; 
+        text-align: center; 
+        transition: all 0.25s ease; 
+        border: none;
+        border-radius: 50px; 
+        overflow: hidden; 
+        z-index: 1;
+        box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-whatsapp::after {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 50%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+        transform: skewX(-25deg);
+        animation: shimmer-effect 4.5s infinite;
+        z-index: 2;
+    }
+
+    .btn-whatsapp:hover { 
+        background-color: #222222;
+        transform: translateY(-1px);
+        box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-btn-whatsapp {
+        position: relative;
+        display: block;
+        width: 100%;
+        background-color: #ffffff;
+        color: #000000;
+        text-decoration: none;
+        padding: 16px 24px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        text-align: center;
+        transition: all 0.25s ease;
+        border: 1px solid #000000;
+        border-radius: 50px; 
+        overflow: hidden; 
+        z-index: 1;
+        box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-btn-whatsapp::after {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 50%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.12), transparent);
+        transform: skewX(-25deg);
+        animation: shimmer-effect 3.5s infinite;
+        z-index: 2;
+    }
+
+    .product-card.sold-item { opacity: 0.5; }
+    .btn-sold, .modal-btn-whatsapp.btn-sold { 
+        background: #f0f0f0 !important; 
+        color: var(--sold-color) !important; 
+        border-color: var(--sold-color) !important; 
+        cursor: not-allowed; 
+        transform: none !important; 
+        box-shadow: none !important; 
+        border-radius: 50px !important;
+    }
+    .btn-sold::after, .modal-btn-whatsapp.btn-sold::after { display: none !important; }
+    
+    .scroll-status { text-align: center; padding: 40px 20px; margin-top: 30px; font-size: 13px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; border-top: 1px solid var(--border-color); display: none; }
+    
+    /* --- MODAL DE ZOOM --- */
+    .modal-overlay { display: flex; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.88); backdrop-filter: blur(6px); justify-content: center; align-items: center; padding: 20px; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.35s ease, visibility 0.35s ease; }
+    .modal-overlay.show { opacity: 1; visibility: visible; pointer-events: auto; }
+    .modal-content { position: relative; max-width: 95vw; max-height: 95vh; display: flex; flex-direction: column; align-items: center; transform: scale(0.88); opacity: 0; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease; }
+    .modal-overlay.show .modal-content { transform: scale(1); opacity: 1; }
+    .modal-content img { max-width: 100%; max-height: 70vh; object-fit: contain; border-radius: 2px; box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5); background-color: transparent; }
+    .modal-close { position: absolute; top: 15px; left: 15px; width: 44px; height: 44px; background-color: rgba(0, 0, 0, 0.8); color: #ffffff; font-size: 26px; font-weight: 300; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.4); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: var(--transition); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); }
+    .modal-close:hover { background-color: #ffffff; color: #000000; }
+    .modal-info-box { display: flex; flex-direction: column; align-items: center; margin-top: 15px; width: 100%; max-width: 400px; }
+    .modal-caption { color: #ffffff; font-family: 'Cormorant Garamond', serif; font-size: 24px; letter-spacing: 0.05em; text-align: center; margin-bottom: 8px; }
+    .modal-prices { display: flex; flex-direction: column; align-items: center; margin-bottom: 15px; width: 100%; }
+    .modal-price-old { font-size: 16px; color: #ff857a; text-decoration: line-through; text-decoration-color: #ff857a; text-decoration-thickness: 2px; font-weight: 500; }
+    .modal-price-current { font-size: 26px; font-weight: 700; color: #ffffff; letter-spacing: 0.02em; }
+    .modal-price-avista { font-size: 18px; font-weight: 600; color: #4caf50; margin-top: 4px; letter-spacing: 0.02em; }
+
+    .no-results { grid-column: 1 / -1; text-align: center; padding: 80px 20px; color: var(--text-muted); font-size: 14px; font-weight: 300; letter-spacing: 0.05em; }
+    .placeholder-svg { background-color: #fcfcfc; display: flex; align-items: center; justify-content: center; }
+    
+    footer { margin-top: 60px; text-align: center; padding: 60px 20px; background-color: #ffffff; border-top: 1px solid var(--border-color); }
+    footer p { font-size: 11px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+    footer a { color: var(--text-main); text-decoration: none; font-weight: 500; border-bottom: 1px solid #000000; padding-bottom: 2px; transition: var(--transition); }
+    
+    @media (max-width: 1100px) {
+        .product-grid { grid-template-columns: repeat(3, 1fr); gap: 30px 20px; }
+        .container { padding: 0 20px 40px 20px; }
+    }
+    @media (max-width: 768px) {
+        .product-grid { grid-template-columns: repeat(2, 1fr); gap: 18px 10px; }
+        header { padding: 12px 15px 5px 15px; }
+        header .logo-loja { max-width: 110px; }
+        header::after { margin: 10px auto 0 auto; width: 40px; }
+        .controls-wrapper { padding: 0 0 8px 0; margin-bottom: 10px; }
+        .search-filter-row { flex-direction: column; align-items: stretch; gap: 6px; margin-bottom: 8px; }
+        .search-box { max-width: 100%; }
+        .search-box input { padding: 8px 12px 8px 35px; font-size: 12px; }
+        .status-filters { justify-content: stretch; }
+        .status-btn { flex: 1; text-align: center; padding: 8px 4px; font-size: 11px; } 
+        .category-tab { padding: 6px 14px; font-size: 11px; }
+        .sizes-container { margin-top: 6px; padding-top: 6px; gap: 6px; }
+        .size-label { font-size: 11px; }
+        .size-tab { padding: 6px 12px; font-size: 11px; }
+        .results-info-row { margin-bottom: 8px; }
+        .results-counter { font-size: 12px; }
+    }
+    
+    @media (max-width: 480px) {
+        .container { padding: 0 12px 40px 12px; }
+        .product-grid { grid-template-columns: repeat(2, 1fr); gap: 20px 12px; }
+        .product-title { font-size: 18px; margin-bottom: 6px; }
+        .product-info { padding: 12px 0 0 0; }
+        
+        .product-all-sizes { font-size: 13px; margin-bottom: 4px; }
+        .product-all-colors { font-size: 12px; margin-bottom: 10px; }
+        
+        .product-size { font-size: 11px; margin-bottom: 14px; padding: 7px 11px; }
+        .destaque-tamanho { font-size: 15px; }
+        
+        .price-current { font-size: 18px; font-weight: 600; }
+        .price-old { font-size: 13px; }
+        .product-price-container { gap: 4px; margin-bottom: 14px; }
+        .product-price-box { gap: 6px; }
+        .btn-whatsapp { padding: 12px 14px; font-size: 11px; letter-spacing: 0.1em; }
+        
+        .badge { padding: 5px 9px; font-size: 10px; top: 10px; }
+        .badge-sale, .badge-sold { left: 10px; }
+        .badge-discount { top: 8px; right: 8px; left: auto; font-size: 12px; padding: 4px 8px; }
+        .badge-destaque { top: 8px; left: 8px; font-size: 9px; padding: 4px 8px; }
+    }
+    </style>
+</head>
+<body>
+    
+    <div class="marquee-bar">
+        <div class="marquee-content">
+            <span>• CATÁLOGO DE VESTIDOS DE FESTA• CATÁLOGO DE VESTIDOS DE FESTA • UNNA •</span>
+            <span>• CATÁLOGO DE VESTIDOS DE FESTA• CATÁLOGO DE VESTIDOS DE FESTA • UNNA •</span>
+    
+            
+        </div>
+    </div>
+
+   <header>
+        <img src="fotos/logo_unna.jpg" alt="Logo UNNA" class="logo-loja" onerror="substituirPorPlaceholder(this)">
+        <h2 class="catalogo-subtitle">Vestidos de Festa - Catálogo</h2>
+    </header>
+    
+    <div class="container">
+        <div class="controls-wrapper">
+            <div class="search-filter-row">
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="search-input" placeholder="Buscar por peça ou tamanho..." oninput="lidarBusca(this.value)">
+                </div>
+                <div class="status-filters">
+                    <button class="status-btn active" id="status-todos" onclick="filtrarStatus('todos')">Ver Tudo</button>
+                    <button class="status-btn" id="status-disponiveis" onclick="filtrarStatus('disponiveis')">Disponíveis</button>
+                    <button class="status-btn" id="status-vendidos" onclick="filtrarStatus('vendidos')">Esgotados</button>
+                </div>
+            </div>
+            
+            <div class="categories-tabs" id="categories-tabs"></div>
+
+            <div class="sizes-container">
+                <span class="size-label">Tamanho:</span>
+                <div class="sizes-tabs" id="sizes-tabs"></div>
+            </div>
+        </div>
+        
+        <div class="results-info-row">
+            <div class="results-counter" id="results-counter">Carregando catálogo...</div>
+        </div>
+        
+        <div class="product-grid" id="product-grid"></div>
+        
+        <div id="scroll-status" class="scroll-status">Carregando mais peças...</div>
+    </div>
+
+    <div id="image-modal" class="modal-overlay" onclick="fecharModal(event)">
+        <div class="modal-content">
+            <span class="modal-close" onclick="fecharModal(event)">&times;</span>
+            <img id="modal-img" src="" alt="Peça ampliada">
+            <div class="modal-info-box">
+                <div id="modal-caption" class="modal-caption"></div>
+                <div id="modal-prices" class="modal-prices"></div>
+                <div id="modal-btn-container" style="width: 100%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 UNNA Modas.</p>
+    </footer>
+    
+    <script>
+        const WHATSAPP_NUMERO = "5579999749647";
+        
+        // --- ESTRUTURA DE PRODUTOS COM VARIANTES ---
+        const produtos = [
+        {
+         "id": 1,
+         "nome": "Vestido longo",
+         "por": "529,90",
+         "vendido": false,
+         "destaque": false,
+         "variantes": [
+            { "cor": "Azul marinho", "tamanho": "50", "imagem": "fotos/vestido_1.jpg" },
+                ]
+            },
+      {
+        "id": 2,
+        "nome": "Vestido longo",
+        "por": "589,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Bordô", "tamanho": "48", "imagem": "fotos/vestido_2.jpg" },
+        ]
+    },
+    {
+        "id": 3,
+        "nome": "Vestido longo",
+        "por": "419,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Azul", "tamanho": "G2", "imagem": "fotos/vestido_3.jpg" },
+        ]
+    },
+    {
+        "id": 4,
+        "nome": "Vestido longo",
+        "por": "429,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Bege", "tamanho": "50", "imagem": "fotos/vestido_4.jpg" },
+        ]
+    },
+    {
+        "id": 5,
+        "nome": "Vestido longo",
+        "por": "539,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Azul", "tamanho": "52", "imagem": "fotos/vestido_5.jpg" },
+        ]
+    },
+    {
+        "id": 6,
+        "nome": "Vestido longo",
+        "por": "549,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Rosa", "tamanho": "50", "imagem": "fotos/vestido_6.jpg" },
+        ]
+    },
+    {
+        "id": 7,
+        "nome": "Vestido longo",
+        "por": "489,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Rosa", "tamanho": "52", "imagem": "fotos/vestido_7.jpg" },
+        ]
+    },
+    {
+        "id": 8,
+        "nome": "Vestido longo",
+        "por": "489,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Terracota", "tamanho": "52", "imagem": "fotos/vestido_8.jpg" },
+        ]
+    },
+    {
+        "id": 9,
+        "nome": "Vestido longo",
+        "por": "379,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Bege", "tamanho": "46", "imagem": "fotos/vestido_9.jpg" },
+        ]
+    },
+    {
+        "id": 10,
+        "nome": "Vestido longo",
+        "por": "419,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Bordô", "tamanho": "G2", "imagem": "fotos/vestido_10.jpg" },
+        ]
+    },
+    {
+        "id": 11,
+        "nome": "Vestido longo",
+        "por": "499,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Verde", "tamanho": "46", "imagem": "fotos/vestido_11.jpg" },
+        ]
+    },
+    {
+        "id": 12,
+        "nome": "Vestido longo",
+        "por": "499,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Azul marinho", "tamanho": "50", "imagem": "fotos/vestido_12.jpg" },
+            { "cor": "Bordô", "tamanho": "48", "imagem": "fotos/vestido_12f2.jpg" },
+        ]
+    },
+    {
+        "id": 13,
+        "nome": "Vestido longo",
+        "por": "489,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Rosa", "tamanho": "46", "imagem": "fotos/vestido_13.jpg" },
+        ]
+    },
+    {
+        "id": 14,
+        "nome": "Vestido curto",
+        "por": "379,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Terracota", "tamanho": "44", "imagem": "fotos/vestido_14.jpg" },
+            { "cor": "Bordô", "tamanho": "46, 50", "imagem": "fotos/vestido_14f2.jpg" },
+        ]
+    },
+    {
+        "id": 15,
+        "nome": "Vestido longo",
+        "por": "489,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Rosa", "tamanho": "52", "imagem": "fotos/vestido_7.jpg" },
+        ]
+    },
+    
+    
+        ];
+        
+        const ITENS_POR_CARREGAMENTO = 24; 
+        let indiceExibicaoAtual = 0;
+        let carregandoMais = false;
+        
+        let categoriaAtual = 'Todos';
+        let tamanhoAtual = 'Todos';
+        let termoPesquisa = '';
+        let statusFiltro = 'todos';
+        let produtosFiltradosGlobais = [];
+        
+        window.estadoVariantes = {};
+        window.estadoFotosCard = {}; 
+        window.intervalosCarrossel = {}; 
+        
+        function calcularDesconto(valorStr) {
+            let valorNum = parseFloat(valorStr.replace('.', '').replace(',', '.'));
+            let valorComDesconto = valorNum * 0.90;
+            // Pega a parte inteira do valor com desconto e força os centavos para ,90
+            let valorInteiro = Math.floor(valorComDesconto);
+            return valorInteiro + ',90';
+        }
+
+        function formatarTamanhosOrdenados(listaItens) {
+            let itensExpandidos = [];
+
+            const ordemLetras = {
+                'PP': 1, 'P': 2, 'M': 3, 'G': 4, 'GG': 5,
+                'XG': 6, 'EG': 7, 'EGG': 8, 'G1': 9, 'G2': 10,
+                'G3': 11, 'G4': 12, 'ÚNICO': 13
+            };
+
+            listaItens.forEach(item => {
+                let tamStr = String(item.tamanho || item).trim();
+                let partes = tamStr.split(/[\,\/\-\s]+/);
+                
+                partes.forEach(p => {
+                    let limpo = p.trim().toUpperCase();
+                    if (limpo !== '') {
+                        let num = parseInt(limpo);
+                        if (!isNaN(num)) {
+                            if (!itensExpandidos.includes(num)) itensExpandidos.push(num);
+                        } else {
+                            if (!itensExpandidos.includes(limpo)) itensExpandidos.push(limpo);
+                        }
+                    }
+                });
+            });
+
+            itensExpandidos.sort((a, b) => {
+                let numA = parseInt(a);
+                let numB = parseInt(b);
+
+                if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
+
+                let pesoA = ordemLetras[String(a).toUpperCase()] || 99;
+                let pesoB = ordemLetras[String(b).toUpperCase()] || 99;
+
+                if (pesoA !== pesoB) return pesoA - pesoB;
+
+                return String(a).localeCompare(String(b));
+            });
+
+            return itensExpandidos.join('/');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            
+            produtos.forEach(p => {
+                const coresUnicasMap = {};
+                p.variantes.forEach(v => {
+                    let corNomeClean = v.cor.split('(')[0].trim().toLowerCase();
+                    if (!coresUnicasMap[corNomeClean]) {
+                        coresUnicasMap[corNomeClean] = {
+                            corOriginal: v.cor.split('(')[0].trim(),
+                            tamanhos: [],
+                            fotos: []
+                        };
+                    }
+                    if (!coresUnicasMap[corNomeClean].tamanhos.includes(v.tamanho)) {
+                        coresUnicasMap[corNomeClean].tamanhos.push(v.tamanho);
+                    }
+                    coresUnicasMap[corNomeClean].fotos.push(v.imagem);
+                });
+
+                p.coresAgrupadas = Object.values(coresUnicasMap);
+            });
+
+            gerarAbasCategorias();
+            gerarAbasTamanhos();
+            atualizarFiltrosERenderizar();
+            configurarObservadorRolagem();
+        });
+
+        function obterCategoriasUnicas() {
+            const listasCategorias = ['Todos'];
+            produtos.forEach(p => {
+                let cat = p.nome.split(' ')[0].trim();
+                cat = cat.charAt(0).toUpperCase() + cat.slice(1).toLowerCase();
+                if (!listasCategorias.includes(cat) && cat.length > 0) {
+                    listasCategorias.push(cat);
+                }
+            });
+            return listasCategorias;
+        }
+
+        function gerarAbasCategorias() {
+            const containerAbas = document.getElementById('categories-tabs');
+            const categorias = obterCategoriasUnicas();
+            containerAbas.innerHTML = '';
+            categorias.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = `category-tab ${cat === 'Todos' ? 'active' : ''}`;
+                btn.textContent = cat;
+                btn.setAttribute('data-category', cat);
+                btn.onclick = () => filtrarCategoria(cat);
+                containerAbas.appendChild(btn);
+            });
+        }
+
+        function gerarAbasTamanhos() {
+            const containerTamanhos = document.getElementById('sizes-tabs');
+            const tamanhosPadrao = ['Todos', '44', '46', '48', '50', '52', '54', 'P', 'M', 'GG', 'G2', 'G3'];
+            
+            containerTamanhos.innerHTML = '';
+            tamanhosPadrao.forEach(tam => {
+                const btn = document.createElement('button');
+                btn.className = `size-tab ${tam === 'Todos' ? 'active' : ''}`;
+                btn.textContent = tam;
+                btn.setAttribute('data-size', tam);
+                btn.onclick = () => filtrarTamanho(tam);
+                containerTamanhos.appendChild(btn);
+            });
+        }
+
+        function filtrarTamanho(tamanho) {
+            tamanhoAtual = tamanho;
+            document.querySelectorAll('.size-tab').forEach(btn => {
+                if (btn.getAttribute('data-size') === tamanho) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+            atualizarFiltrosERenderizar();
+        }
+
+        function verificaTamanhoCompativel(produto, tamanhoBuscado) {
+            if (tamanhoBuscado === 'Todos') return true;
+            const tamBuscaUpper = tamanhoBuscado.toUpperCase();
+            
+            return produto.variantes.some(v => {
+                let tamFormatado = formatarTamanhosOrdenados([v]);
+                return tamFormatado.toUpperCase().includes(tamBuscaUpper) || v.tamanho.toUpperCase().includes(tamBuscaUpper);
+            });
+        }
+
+        function filtrarCategoria(categoria) {
+            categoriaAtual = categoria;
+            document.querySelectorAll('.category-tab').forEach(btn => {
+                if (btn.getAttribute('data-category') === categoria) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+            atualizarFiltrosERenderizar();
+        }
+
+        function lidarBusca(valor) {
+            termoPesquisa = valor;
+            atualizarFiltrosERenderizar();
+        }
+
+        function filtrarStatus(status) {
+            statusFiltro = status;
+            document.querySelectorAll('.status-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`status-${status}`).classList.add('active');
+            atualizarFiltrosERenderizar();
+        }
+
+         function atualizarFiltrosERenderizar() {    
+            produtosFiltradosGlobais = produtos.filter(p => {
+                const catItem = p.nome.split(' ')[0].charAt(0).toUpperCase() + p.nome.split(' ')[0].slice(1).toLowerCase();
+                
+                const matchesCategoria = (categoriaAtual === 'Todos' || catItem === categoriaAtual);
+                const matchesTamanho = verificaTamanhoCompativel(p, tamanhoAtual);
+                const matchesStatus = (statusFiltro === 'todos') || (statusFiltro === 'disponiveis' && !p.vendido) || (statusFiltro === 'vendidos' && p.vendido);
+                
+                const matchesPesquisa = p.nome.toLowerCase().includes(termoPesquisa.toLowerCase()) || 
+                                        p.variantes.some(v => v.tamanho.toLowerCase().includes(termoPesquisa.toLowerCase()) || v.cor.toLowerCase().includes(termoPesquisa.toLowerCase()));
+
+                return matchesCategoria && matchesTamanho && matchesPesquisa && matchesStatus;
+            });
+            
+            produtosFiltradosGlobais.sort(() => Math.random() - 0.5);
+            
+            produtosFiltradosGlobais.sort((a, b) => {
+                if (a.vendido !== b.vendido) return a.vendido ? 1 : -1;
+                const destaqueA = a.destaque ? 1 : 0;
+                const destaqueB = b.destaque ? 1 : 0;
+                return destaqueB - destaqueA;
+            });
+            
+            indiceExibicaoAtual = 0;
+            document.getElementById('product-grid').innerHTML = '';
+            
+            const totalProdutos = produtosFiltradosGlobais.length;
+            document.getElementById('results-counter').textContent = `Mostrando ${totalProdutos} item(ns) encontrado(s)`;
+            
+            if (totalProdutos === 0) {
+                document.getElementById('product-grid').innerHTML = `<div class="no-results">Nenhuma peça encontrada nos critérios selecionados.</div>`;
+                document.getElementById('scroll-status').style.display = 'none';
+                return;
+            }
+            
+            carregarMaisProdutos();
+        }
+
+        function trocarCor(event, produtoId, corIndex, dotElement) {
+            event.stopPropagation();
+            
+            if (window.intervalosCarrossel[produtoId]) {
+                clearInterval(window.intervalosCarrossel[produtoId]);
+                window.intervalosCarrossel[produtoId] = null;
+            }
+
+            const indContainer = document.getElementById(`indicators-${produtoId}`);
+            if (indContainer) indContainer.style.display = 'none';
+
+            window.estadoVariantes[produtoId] = corIndex;
+
+            const produto = produtos.find(p => p.id === produtoId);
+            const corObj = produto.coresAgrupadas[corIndex];
+            
+            let todasAsFotos = [];
+            produto.variantes.forEach(v => {
+                if (v.imagem && !todasAsFotos.includes(v.imagem)) todasAsFotos.push(v.imagem);
+            });
+            let fotoIndex = todasAsFotos.indexOf(corObj.fotos[0]);
+            if (fotoIndex === -1) fotoIndex = 0;
+            
+            window.estadoFotosCard[produtoId] = fotoIndex;
+            
+            const trackElement = document.getElementById(`track-${produtoId}`);
+            if (trackElement) {
+                trackElement.style.transform = `translateX(-${fotoIndex * 100}%)`;
+            }
+
+            const stringTamanhos = formatarTamanhosOrdenados(corObj.tamanhos);
+            document.getElementById(`size-${produtoId}`).innerHTML = `Cor: <b>${corObj.corOriginal}</b> <br>Tam. desta cor: <span class="destaque-tamanho">${stringTamanhos}</span>`;
+
+            const container = dotElement.parentElement;
+            container.querySelectorAll('.cor-dot').forEach(d => d.classList.remove('active'));
+            dotElement.classList.add('active');
+
+            const btnCompra = document.getElementById(`btn-compra-${produtoId}`);
+            if(btnCompra) {
+                const mensagemWhats = encodeURIComponent(`Olá, UNNA! Amei o "${produto.nome}" na cor ${corObj.corOriginal} (Tamanhos disponíveis: ${stringTamanhos}). Gostaria de verificar a disponibilidade para compra!`);
+                btnCompra.href = `https://wa.me/${WHATSAPP_NUMERO}?text=${mensagemWhats}`;
+            }
+        }
+
+        function carregarMaisProdutos() {
+            if (carregandoMais || indiceExibicaoAtual >= produtosFiltradosGlobais.length) return;
+            
+            carregandoMais = true;
+            const statusDiv = document.getElementById('scroll-status');
+            const grid = document.getElementById('product-grid');
+            
+            const proximoLote = produtosFiltradosGlobais.slice(indiceExibicaoAtual, indiceExibicaoAtual + ITENS_POR_CARREGAMENTO);
+            
+            proximoLote.forEach(p => {
+                if (window.estadoVariantes[p.id] === undefined) window.estadoVariantes[p.id] = 0;
+                if (window.estadoFotosCard[p.id] === undefined) window.estadoFotosCard[p.id] = 0;
+                
+                let corIndex = window.estadoVariantes[p.id];
+                let corObj = p.coresAgrupadas[corIndex];
+                
+                const stringTamanhosAtual = formatarTamanhosOrdenados(corObj.tamanhos);
+                const todosTamanhos = formatarTamanhosOrdenados(p.variantes);
+                const todasCores = [...new Set(p.coresAgrupadas.map(c => c.corOriginal))].join(', ');
+
+                // Gera as bolinhas de cor
+                let carrosselCoresHtml = '';
+                if(p.coresAgrupadas.length > 1) {
+                    carrosselCoresHtml = '<div class="cores-container">';
+                    p.coresAgrupadas.forEach((c, index) => {
+                        carrosselCoresHtml += `<div class="cor-dot ${index === corIndex ? 'active' : ''}" style="background-image: url('${c.fotos[0]}')" onclick="trocarCor(event, ${p.id}, ${index}, this)" title="Cor: ${c.corOriginal}"></div>`;
+                    });
+                    carrosselCoresHtml += '</div>';
+                }
+
+                // --- GERA O TRILHO DESLIZANTE DE FOTOS E OS INDICADORES ---
+                let todasAsFotosCard = [];
+                p.variantes.forEach(v => {
+                    if (v.imagem && !todasAsFotosCard.includes(v.imagem)) todasAsFotosCard.push(v.imagem);
+                });
+
+                let trackImagensHtml = '';
+                todasAsFotosCard.forEach(foto => {
+                    trackImagensHtml += `<img src="${foto}" alt="${p.nome}" onclick="abrirModal(${p.id})" onerror="substituirPorPlaceholder(this)">`;
+                });
+
+                let indicadoresHtml = '';
+                if (todasAsFotosCard.length > 1) {
+                    indicadoresHtml = `<div class="carousel-indicators" id="indicators-${p.id}">`;
+                    todasAsFotosCard.forEach((_, i) => {
+                        indicadoresHtml += `<div class="indicator-bar ${i === window.estadoFotosCard[p.id] ? 'active' : ''}"></div>`;
+                    });
+                    indicadoresHtml += `</div>`;
+                }
+
+                const mensagemWhats = encodeURIComponent(`Olá, UNNA! Amei o "${p.nome}" na cor ${corObj.corOriginal} (Tamanhos disponíveis: ${stringTamanhosAtual}). Gostaria de verificar a disponibilidade para compra!`);
+                const linkWhats = `https://wa.me/${WHATSAPP_NUMERO}?text=${mensagemWhats}`;
+
+                const card = document.createElement('div');
+                card.className = `product-card ${p.vendido ? 'sold-item' : ''}`;
+                
+                card.innerHTML = `
+                    <div class="product-image-container">
+                        ${p.destaque ? '<span class="badge badge-destaque">⭐ DESTAQUE</span>' : ''}
+                        ${p.vendido ? `<span class="badge badge-sold" style="${p.destaque ? 'top: 42px;' : ''}">ESGOTADO</span>` : ''}
+                        ${p.desconto > 0 && !p.vendido ? `<span class="badge badge-discount">-${p.desconto}%</span>` : ''}
+                        
+                        <div class="carousel-track" id="track-${p.id}" style="transform: translateX(-${window.estadoFotosCard[p.id] * 100}%);">
+                            ${trackImagensHtml}
+                        </div>
+                        
+                        ${indicadoresHtml}
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">${p.nome.split(' ')[0]}</span>
+                        <h3 class="product-title">${p.nome}</h3>
+                        
+                        <div class="product-all-sizes">Tamanhos: ${todosTamanhos}</div>
+                        <div class="product-all-colors">Cores: ${todasCores}</div>
+                        
+                        ${carrosselCoresHtml}
+                        
+                        <div>
+                            <div class="product-size" id="size-${p.id}">
+                                Cor: <b>${corObj.corOriginal}</b> <br>
+                                Tam. desta cor: <span class="destaque-tamanho">${stringTamanhosAtual}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="product-price-container">
+                            <div class="product-price-box">
+                                ${p.de && p.de !== '—' ? `<span class="price-old">R$ ${p.de}</span>` : ''}
+                                <span class="price-current">R$ ${p.por}</span>
+                            </div>
+                            <div class="price-avista">
+                                R$ ${calcularDesconto(p.por)} à vista (10% OFF)
+                            </div>
+                        </div>
+                        ${p.vendido ? 
+                            '<button class="btn-whatsapp btn-sold" disabled>Indisponível</button>' : 
+                            `<a id="btn-compra-${p.id}" href="${linkWhats}" target="_blank" class="btn-whatsapp">Comprar</a>`
+                        }
+                    </div>
+                `;
+                grid.appendChild(card);
+                iniciarCarrosselAutomatico(p.id);
+            });
+            
+            indiceExibicaoAtual += proximoLote.length;
+            
+            if (indiceExibicaoAtual >= produtosFiltradosGlobais.length) {
+                statusDiv.textContent = '• VOCÊ CHEGOU AO FIM DO CATÁLOGO •';
+                statusDiv.style.display = 'block';
+            } else {
+                statusDiv.textContent = 'Carregando mais peças...';
+                statusDiv.style.display = 'block';
+            }
+            
+            carregandoMais = false;
+        }
+
+        // --- FUNÇÃO PARA PASSAR TODAS AS FOTOS AUTOMATICAMENTE (DESLIZANDO) ---
+        function iniciarCarrosselAutomatico(produtoId) {
+            const produto = produtos.find(p => p.id === produtoId);
+            if (!produto) return;
+
+            let todasAsFotos = [];
+            produto.variantes.forEach(v => {
+                if (v.imagem && !todasAsFotos.includes(v.imagem)) {
+                    todasAsFotos.push(v.imagem);
+                }
+            });
+
+            if (todasAsFotos.length > 1) {
+                window.intervalosCarrossel[produtoId] = setInterval(() => {
+                    const trackElement = document.getElementById(`track-${produtoId}`);
+                    if (!trackElement) return;
+
+                    let indiceAtualFoto = window.estadoFotosCard[produtoId] || 0;
+                    indiceAtualFoto = (indiceAtualFoto + 1) % todasAsFotos.length;
+                    window.estadoFotosCard[produtoId] = indiceAtualFoto;
+
+                    // O segredo do deslize
+                    trackElement.style.transform = `translateX(-${indiceAtualFoto * 100}%)`;
+                    
+                    const indContainer = document.getElementById(`indicators-${produtoId}`);
+                    if (indContainer) {
+                        const bars = indContainer.querySelectorAll('.indicator-bar');
+                        bars.forEach((bar, index) => {
+                            if (index === indiceAtualFoto) bar.classList.add('active');
+                            else bar.classList.remove('active');
+                        });
+                    }
+                }, 4000); 
+            }
+        }
+
+        function configurarObservadorRolagem() {
+            window.addEventListener('scroll', () => {
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 400) {
+                    carregarMaisProdutos();
+                }
+            });
+        }
+
+        function substituirPorPlaceholder(imgElement) {
+            imgElement.onerror = null; 
+            imgElement.parentElement.classList.add('placeholder-svg');
+            imgElement.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 24 24' fill='none' stroke='%23d9d9d9' stroke-width='1' stroke-linecap='round' stroke-linejoin='round' style='margin:auto;'><rect x='3' y='3' width='18' height='18' rx='2' ry='2'/><circle cx='8.5' cy='8.5' r='1.5'/><polyline points='21 15 16 10 5 21'/></svg>";
+        }
+
+        function abrirModal(idProduto) {
+            const produto = produtos.find(p => p.id === idProduto);
+            if (!produto) return;
+
+            let corIndex = window.estadoVariantes[idProduto] || 0;
+            let corObj = produto.coresAgrupadas[corIndex];
+            
+            // Puxa a foto certa considerando o trilho global
+            let todasAsFotos = [];
+            produto.variantes.forEach(v => {
+                if (v.imagem && !todasAsFotos.includes(v.imagem)) todasAsFotos.push(v.imagem);
+            });
+            
+            let fotoIndex = window.estadoFotosCard[idProduto] || 0;
+            let fotoAtual = todasAsFotos[fotoIndex];
+            
+            const stringTamanhosAtual = formatarTamanhosOrdenados(corObj.tamanhos);
+
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            const modalCaption = document.getElementById('modal-caption');
+            const modalPrices = document.getElementById('modal-prices');
+            const modalBtnContainer = document.getElementById('modal-btn-container');
+            
+            modalImg.src = fotoAtual;
+            modalCaption.textContent = `${produto.nome} - ${corObj.corOriginal} (Tam: ${stringTamanhosAtual})`;
+            
+            modalPrices.innerHTML = `
+                <div style="display: flex; align-items: baseline; gap: 12px;">
+                    ${produto.de && produto.de !== '—' ? `<span class="modal-price-old">R$ ${produto.de}</span>` : ''}
+                    <span class="modal-price-current">R$ ${produto.por}</span>
+                </div>
+                <div class="modal-price-avista">R$ ${calcularDesconto(produto.por)} à vista (10% OFF)</div>
+            `;
+
+            const mensagemWhats = encodeURIComponent(`Olá, UNNA! Amei o "${produto.nome}" na cor ${corObj.corOriginal} (Tamanhos disponíveis: ${stringTamanhosAtual}). Gostaria de verificar a disponibilidade para compra!`);
+            const linkWhats = `https://wa.me/${WHATSAPP_NUMERO}?text=${mensagemWhats}`;
+
+           if (produto.vendido) {
+                modalBtnContainer.innerHTML = `<button class="modal-btn-whatsapp btn-sold" disabled>Indisponível</button>`;
+            } else {
+                modalBtnContainer.innerHTML = `<a href="${linkWhats}" target="_blank" class="modal-btn-whatsapp">COMPRAR AGORA NO WHATSAPP</a>`;
+            }
+            
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function fecharModal(event) {
+            if (!event || event.target.id === 'image-modal' || event.target.classList.contains('modal-close')) {
+                const modal = document.getElementById('image-modal');
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                fecharModal();
+            }
+        });
+    </script>
+</body>
+</html>
