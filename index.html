@@ -265,7 +265,7 @@
         border: 1px solid rgba(255, 255, 255, 0.15);
     }
     
-    .product-info { padding: 20px 0 0 0; display: flex; flex-direction: column; flex-grow: 1; }
+    .product-info { padding: 20px 16px 16px 16px; display: flex; flex-direction: column; flex-grow: 1; }
     .product-category { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 6px; font-weight: 400; }
     .product-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; color: var(--text-main); margin-bottom: 8px; line-height: 1.2; text-transform: capitalize; }
     
@@ -477,22 +477,53 @@
         .badge-discount { top: 8px; right: 8px; left: auto; font-size: 12px; padding: 4px 8px; }
         .badge-destaque { top: 8px; left: 8px; font-size: 9px; padding: 4px 8px; }
     }
-    </style>
+    
+    /* --- EFEITOS ESPECIAIS: VESTIDOS DE FESTA --- */
+    @keyframes sutil-glow {
+        0% { text-shadow: 0 0 5px rgba(212, 175, 55, 0.1); }
+        100% { text-shadow: 0 0 15px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.2); color: #5a4b1c; }
+    }
+    .sparkle-animation {
+        animation: sutil-glow 3s infinite alternate;
+        font-weight: 600;
+        letter-spacing: 0.35em;
+    }
+    
+    /* Efeito de brilho dourado nos botões do whatsapp para dar um tom mais 'festa' */
+    .btn-whatsapp::after {
+        background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.35), transparent);
+    }
+    
+    .modal-btn-whatsapp::after {
+        background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.25), transparent);
+    }
+    
+    /* Efeito flutuante e cantos arredondados no card (menos quadradão) */
+    .product-card {
+        border-radius: 12px;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        background-color: #ffffff;
+        border: none;
+    }
+    .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 18px 40px rgba(212, 175, 55, 0.15), 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    /* ------------------------------------------- */
+</style>
 </head>
 <body>
     
     <div class="marquee-bar">
         <div class="marquee-content">
-            <span>• CATÁLOGO DE VESTIDOS DE FESTA• CATÁLOGO DE VESTIDOS DE FESTA • UNNA •</span>
-            <span>• CATÁLOGO DE VESTIDOS DE FESTA• CATÁLOGO DE VESTIDOS DE FESTA • UNNA •</span>
-    
-            
+            <span>✨ CATÁLOGO DE VESTIDOS DE FESTA ✨ CATÁLOGO DE VESTIDOS DE FESTA ✨ UNNA ✨</span>
+            <span>✨ CATÁLOGO DE VESTIDOS DE FESTA ✨ CATÁLOGO DE VESTIDOS DE FESTA ✨ UNNA ✨</span>
         </div>
     </div>
 
    <header>
         <img src="fotos/logo_unna.jpg" alt="Logo UNNA" class="logo-loja" onerror="substituirPorPlaceholder(this)">
-        <h2 class="catalogo-subtitle">Vestidos de Festa - Catálogo</h2>
+        <h2 class="catalogo-subtitle sparkle-animation">✨ Vestidos de Festa - Catálogo ✨</h2>
     </header>
     
     <div class="container">
@@ -545,7 +576,6 @@
     <script>
         const WHATSAPP_NUMERO = "5579999749647";
         
-        // --- ESTRUTURA DE PRODUTOS COM VARIANTES ---
         const produtos = [
         {
          "id": 1,
@@ -698,10 +728,8 @@
         "variantes": [
             { "cor": "Rosa", "tamanho": "52", "imagem": "fotos/vestido_7.jpg" },
         ]
-    },
-    
-    
-        ];
+    }
+    ];
         
         const ITENS_POR_CARREGAMENTO = 24; 
         let indiceExibicaoAtual = 0;
@@ -720,14 +748,12 @@
         function calcularDesconto(valorStr) {
             let valorNum = parseFloat(valorStr.replace('.', '').replace(',', '.'));
             let valorComDesconto = valorNum * 0.90;
-            // Pega a parte inteira do valor com desconto e força os centavos para ,90
             let valorInteiro = Math.floor(valorComDesconto);
             return valorInteiro + ',90';
         }
 
         function formatarTamanhosOrdenados(listaItens) {
             let itensExpandidos = [];
-
             const ordemLetras = {
                 'PP': 1, 'P': 2, 'M': 3, 'G': 4, 'GG': 5,
                 'XG': 6, 'EG': 7, 'EGG': 8, 'G1': 9, 'G2': 10,
@@ -754,14 +780,10 @@
             itensExpandidos.sort((a, b) => {
                 let numA = parseInt(a);
                 let numB = parseInt(b);
-
                 if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
-
                 let pesoA = ordemLetras[String(a).toUpperCase()] || 99;
                 let pesoB = ordemLetras[String(b).toUpperCase()] || 99;
-
                 if (pesoA !== pesoB) return pesoA - pesoB;
-
                 return String(a).localeCompare(String(b));
             });
 
@@ -769,7 +791,6 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            
             produtos.forEach(p => {
                 const coresUnicasMap = {};
                 p.variantes.forEach(v => {
@@ -786,7 +807,6 @@
                     }
                     coresUnicasMap[corNomeClean].fotos.push(v.imagem);
                 });
-
                 p.coresAgrupadas = Object.values(coresUnicasMap);
             });
 
@@ -849,7 +869,6 @@
         function verificaTamanhoCompativel(produto, tamanhoBuscado) {
             if (tamanhoBuscado === 'Todos') return true;
             const tamBuscaUpper = tamanhoBuscado.toUpperCase();
-            
             return produto.variantes.some(v => {
                 let tamFormatado = formatarTamanhosOrdenados([v]);
                 return tamFormatado.toUpperCase().includes(tamBuscaUpper) || v.tamanho.toUpperCase().includes(tamBuscaUpper);
@@ -880,11 +899,9 @@
          function atualizarFiltrosERenderizar() {    
             produtosFiltradosGlobais = produtos.filter(p => {
                 const catItem = p.nome.split(' ')[0].charAt(0).toUpperCase() + p.nome.split(' ')[0].slice(1).toLowerCase();
-                
                 const matchesCategoria = (categoriaAtual === 'Todos' || catItem === categoriaAtual);
                 const matchesTamanho = verificaTamanhoCompativel(p, tamanhoAtual);
                 const matchesStatus = (statusFiltro === 'todos') || (statusFiltro === 'disponiveis' && !p.vendido) || (statusFiltro === 'vendidos' && p.vendido);
-                
                 const matchesPesquisa = p.nome.toLowerCase().includes(termoPesquisa.toLowerCase()) || 
                                         p.variantes.some(v => v.tamanho.toLowerCase().includes(termoPesquisa.toLowerCase()) || v.cor.toLowerCase().includes(termoPesquisa.toLowerCase()));
 
@@ -892,7 +909,6 @@
             });
             
             produtosFiltradosGlobais.sort(() => Math.random() - 0.5);
-            
             produtosFiltradosGlobais.sort((a, b) => {
                 if (a.vendido !== b.vendido) return a.vendido ? 1 : -1;
                 const destaqueA = a.destaque ? 1 : 0;
@@ -917,7 +933,6 @@
 
         function trocarCor(event, produtoId, corIndex, dotElement) {
             event.stopPropagation();
-            
             if (window.intervalosCarrossel[produtoId]) {
                 clearInterval(window.intervalosCarrossel[produtoId]);
                 window.intervalosCarrossel[produtoId] = null;
@@ -927,7 +942,6 @@
             if (indContainer) indContainer.style.display = 'none';
 
             window.estadoVariantes[produtoId] = corIndex;
-
             const produto = produtos.find(p => p.id === produtoId);
             const corObj = produto.coresAgrupadas[corIndex];
             
@@ -961,7 +975,6 @@
 
         function carregarMaisProdutos() {
             if (carregandoMais || indiceExibicaoAtual >= produtosFiltradosGlobais.length) return;
-            
             carregandoMais = true;
             const statusDiv = document.getElementById('scroll-status');
             const grid = document.getElementById('product-grid');
@@ -979,7 +992,6 @@
                 const todosTamanhos = formatarTamanhosOrdenados(p.variantes);
                 const todasCores = [...new Set(p.coresAgrupadas.map(c => c.corOriginal))].join(', ');
 
-                // Gera as bolinhas de cor
                 let carrosselCoresHtml = '';
                 if(p.coresAgrupadas.length > 1) {
                     carrosselCoresHtml = '<div class="cores-container">';
@@ -989,7 +1001,6 @@
                     carrosselCoresHtml += '</div>';
                 }
 
-                // --- GERA O TRILHO DESLIZANTE DE FOTOS E OS INDICADORES ---
                 let todasAsFotosCard = [];
                 p.variantes.forEach(v => {
                     if (v.imagem && !todasAsFotosCard.includes(v.imagem)) todasAsFotosCard.push(v.imagem);
@@ -1071,11 +1082,9 @@
                 statusDiv.textContent = 'Carregando mais peças...';
                 statusDiv.style.display = 'block';
             }
-            
             carregandoMais = false;
         }
 
-        // --- FUNÇÃO PARA PASSAR TODAS AS FOTOS AUTOMATICAMENTE (DESLIZANDO) ---
         function iniciarCarrosselAutomatico(produtoId) {
             const produto = produtos.find(p => p.id === produtoId);
             if (!produto) return;
@@ -1096,7 +1105,6 @@
                     indiceAtualFoto = (indiceAtualFoto + 1) % todasAsFotos.length;
                     window.estadoFotosCard[produtoId] = indiceAtualFoto;
 
-                    // O segredo do deslize
                     trackElement.style.transform = `translateX(-${indiceAtualFoto * 100}%)`;
                     
                     const indContainer = document.getElementById(`indicators-${produtoId}`);
@@ -1132,7 +1140,6 @@
             let corIndex = window.estadoVariantes[idProduto] || 0;
             let corObj = produto.coresAgrupadas[corIndex];
             
-            // Puxa a foto certa considerando o trilho global
             let todasAsFotos = [];
             produto.variantes.forEach(v => {
                 if (v.imagem && !todasAsFotos.includes(v.imagem)) todasAsFotos.push(v.imagem);
@@ -1185,6 +1192,21 @@
             if (event.key === "Escape") {
                 fecharModal();
             }
+        });
+    </script>
+
+    <!-- Biblioteca de Confetes (Canvas Confetti) -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                confetti({
+                    particleCount: 150,
+                    spread: 90,
+                    origin: { y: 0.2 },
+                    colors: ['#d4af37', '#ffd700', '#fff8dc', '#b8860b', '#ffffff', '#000000']
+                });
+            }, 400);
         });
     </script>
 </body>
