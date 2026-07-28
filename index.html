@@ -516,8 +516,8 @@
     
     <div class="marquee-bar">
         <div class="marquee-content">
-            <span>✨ CATÁLOGO DE VESTIDOS DE FESTA ✨ CATÁLOGO DE VESTIDOS DE FESTA ✨ UNNA ✨</span>
-            <span>✨ CATÁLOGO DE VESTIDOS DE FESTA ✨ CATÁLOGO DE VESTIDOS DE FESTA ✨ UNNA ✨</span>
+            <span>✨ CATÁLOGO DE VESTIDOS DE FESTA - UNNA ✨ CATÁLOGO DE VESTIDOS DE FESTA - UNNA ✨</span>
+            <span>✨ CATÁLOGO DE VESTIDOS DE FESTA - UNNA ✨ CATÁLOGO DE VESTIDOS DE FESTA - UNNA ✨</span>
         </div>
     </div>
 
@@ -782,6 +782,131 @@
             { "cor": "Bordô", "tamanho": "46", "imagem": "fotos/vestido_20.jpg" },
         ]
     },
+       {
+        "id": 21,
+        "nome": "Vestido midi",
+        "por": "329,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Marrom", "tamanho": "48", "imagem": "fotos/vestido_21mar.jpg" },
+            { "cor": "Terracota", "tamanho": "46", "imagem": "fotos/vestido_21ter.jpg" },
+        ]
+    },
+    {
+        "id": 22,
+        "nome": "Vestido midi",
+        "por": "369,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Marrom", "tamanho": "46, 50", "imagem": "fotos/vestido_22mar.jpg" },
+            { "cor": "Bordô", "tamanho": "44, 48", "imagem": "fotos/vestido_22bor.jpg" },
+            { "cor": "Preto", "tamanho": "48", "imagem": "fotos/vestido_22pre.jpg" },
+        ]
+    },
+    {
+        "id": 23,
+        "nome": "Vestido midi",
+        "por": "389,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Bege", "tamanho": "46, 48", "imagem": "fotos/vestido_23.jpg" },
+            { "cor": "Bege", "tamanho": "46, 48", "imagem": "fotos/vestido_23dt.jpg" },
+        ]
+    },
+     {
+        "id": 24,
+        "nome": "Vestido midi",
+        "por": "339,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Azul", "tamanho": "46", "imagem": "fotos/vestido_24az.jpg" },
+            { "cor": "Bordô", "tamanho": "44, 48", "imagem": "fotos/vestido_24bor.jpg" },
+            { "cor": "Preto", "tamanho": "52", "imagem": "fotos/vestido_24pre.jpg" },
+        ]
+    },
+    {
+        "id": 25,
+        "nome": "Vestido midi",
+        "por": "339,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Preto", "tamanho": "48", "imagem": "fotos/vestido_25.jpg" },
+            { "cor": "Preto", "tamanho": "48", "imagem": "fotos/vestido_25dt.jpg" },
+        ]
+    },
+    {
+        "id": 26,
+        "nome": "Vestido midi",
+        "por": "339,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Preto", "tamanho": "48", "imagem": "fotos/vestido_26.jpg" },
+        ]
+    },
+    {
+        "id": 27,
+        "nome": "Vestido midi",
+        "por": "229,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Bordô", "tamanho": "44", "imagem": "fotos/vestido_27.jpg" },
+        ]
+    },
+    {
+        "id": 28,
+        "nome": "Vestido curto",
+        "por": "579,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Branco", "tamanho": "46, 50, 54", "imagem": "fotos/vestido_28.jpg" },
+            { "cor": "Branco", "tamanho": "46, 50, 54", "imagem": "fotos/vestido_28dt.jpg" },
+        ]
+    },
+       {
+        "id": 29,
+        "nome": "Vestido longo",
+        "por": "389,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Branco", "tamanho": "50", "imagem": "fotos/vestido_29bra.jpg" },
+            { "cor": "Amarelo", "tamanho": "52", "imagem": "fotos/vestido_29ama.jpg" },
+            { "cor": "Vermelho", "tamanho": "54", "imagem": "fotos/vestido_29verm.jpg" },
+        ]
+    },
+    {
+        "id": 30,
+        "nome": "Conjunto",
+        "por": "549,80",
+        "precos_separados": [
+            { "peca": "Blusa", "valor": "219,90" },
+            { "peca": "Saia", "valor": "329,90" }
+        ],
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Preto", "tamanho": "GG, G1", "imagem": "fotos/conjunto_1.jpg" }
+        ]
+    },
+    {
+        "id": 31,
+        "nome": "Vestido midi",
+        "por": "399,90",
+        "vendido": false,
+        "destaque": false,
+        "variantes": [
+            { "cor": "Vermelho", "tamanho": "46/48/50", "imagem": "fotos/vestido_30.jpg" },
+        ]
+    },
+    
     ];
         
         const ITENS_POR_CARREGAMENTO = 24; 
@@ -1108,10 +1233,19 @@
                         </div>
                         
                         <div class="product-price-container">
-                            <div class="product-price-box">
-                                ${p.de && p.de !== '—' ? `<span class="price-old">R$ ${p.de}</span>` : ''}
-                                <span class="price-current">R$ ${p.por}</span>
-                            </div>
+                            ${p.precos_separados ? 
+                                `<div style="font-size:15px; color:var(--text-muted); margin-bottom:6px; line-height: 1.4;">
+                                    ${p.precos_separados.map(ps => `${ps.peca}: <b style="color:var(--text-main)">R$ ${ps.valor}</b>`).join(' <br> ')}
+                                </div>
+                                <div class="product-price-box">
+                                    <span class="price-current" style="font-size:20px;">Look Completo: R$ ${p.por}</span>
+                                </div>`
+                                :
+                                `<div class="product-price-box">
+                                    ${p.de && p.de !== '—' ? `<span class="price-old">R$ ${p.de}</span>` : ''}
+                                    <span class="price-current">R$ ${p.por}</span>
+                                </div>`
+                            }
                             <div class="price-avista">
                                 R$ ${calcularDesconto(p.por)} à vista (10% OFF)
                             </div>
@@ -1212,7 +1346,15 @@
             modalImg.src = fotoAtual;
             modalCaption.textContent = `${produto.nome} - ${corObj.corOriginal} (Tam: ${stringTamanhosAtual})`;
             
-            modalPrices.innerHTML = `
+            modalPrices.innerHTML = produto.precos_separados ? `
+                <div style="font-size:15px; color:#ddd; margin-bottom:8px; text-align:center;">
+                    ${produto.precos_separados.map(ps => `${ps.peca}: <b>R$ ${ps.valor}</b>`).join(' &nbsp;|&nbsp; ')}
+                </div>
+                <div style="display: flex; align-items: baseline; gap: 12px;">
+                    <span class="modal-price-current">Look Completo: R$ ${produto.por}</span>
+                </div>
+                <div class="modal-price-avista">R$ ${calcularDesconto(produto.por)} à vista (10% OFF)</div>
+            ` : `
                 <div style="display: flex; align-items: baseline; gap: 12px;">
                     ${produto.de && produto.de !== '—' ? `<span class="modal-price-old">R$ ${produto.de}</span>` : ''}
                     <span class="modal-price-current">R$ ${produto.por}</span>
