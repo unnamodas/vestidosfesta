@@ -264,6 +264,19 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         border: 1px solid rgba(255, 255, 255, 0.15);
     }
+    /* --- NOVA TAG: NOVIDADE CHEGANDO --- */
+    .badge-novidade {
+        background-color: #d4af37; 
+        color: #ffffff; 
+        top: 15px; 
+        left: 15px; 
+        font-size: 9px; 
+        font-weight: 600; 
+        padding: 5px 10px; 
+        letter-spacing: 0.08em; 
+        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
     
     .product-info { padding: 20px 16px 16px 16px; display: flex; flex-direction: column; flex-grow: 1; }
     .product-category { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 6px; font-weight: 400; }
@@ -907,7 +920,7 @@
         "variantes": [
             { "cor": "Branco", "tamanho": "46/48/50", "imagem": "fotos/vestido_31.jpg" },
         ]
-        <!--código bling: 11831 pred-->
+         /* id 32 código bling: 11831 pred */
     },
      {
         "id": 34,
@@ -926,10 +939,73 @@
         "vendido": false,
         "destaque": false,
         "variantes": [
-            { "cor": "Azul", "tamanho": "46", "imagem": "fotos/vestido_34.jpg" },
+            { "cor": "Verde", "tamanho": "46", "imagem": "fotos/vestido_34.jpg" },
         ]
     },
-    
+    {
+        "id": 36,
+        "nome": "Vestido longo",
+        "por": "539,90",
+        "vendido": false,
+        "destaque": false,
+        "novidade": true,
+        "variantes": [
+            { "cor": "Verde Oliva", "tamanho": "46", "imagem": "fotos/vestido_35ver.jpg" },
+            { "cor": "Terracota", "tamanho": "GG", "imagem": "fotos/vestido_35ter.jpg" },
+            { "cor": "Bordô", "tamanho": "GG", "imagem": "fotos/vestido_35bor.jpg" },
+        ]
+        /* id 36 código bling: 50560 */
+    },
+    {
+        "id": 37,
+        "nome": "Vestido longo",
+        "por": "569,90",
+        "vendido": false,
+        "destaque": false,
+        "novidade": true,
+        "variantes": [
+            { "cor": "Terracota", "tamanho": "50, 52", "imagem": "fotos/vestido_36ter.jpg" },
+            { "cor": "Bordô", "tamanho": "46, 50, 52", "imagem": "fotos/vestido_36bor.jpg" },
+        ]
+        /* id 37 código bling: 23130 */
+    },
+    {
+        "id": 38,
+        "nome": "Vestido longo",
+        "por": "369,90",
+        "vendido": false,
+        "destaque": false,
+        "novidade": true,
+        "variantes": [
+            { "cor": "Bordô", "tamanho": "50", "imagem": "fotos/vestido_37.jpg" },
+            { "cor": "Verde", "tamanho": "GG", "imagem": "fotos/vestido_37ver.jpg" },
+        ]
+        /* id 38 código bling: 41460 */
+    },
+    {
+        "id": 39,
+        "nome": "Vestido longo",
+        "por": "569,90",
+        "vendido": false,
+        "destaque": false,
+        "novidade": true,
+        "variantes": [
+            { "cor": "Azul Petróleo", "tamanho": "48, 50", "imagem": "fotos/vestido_38.jpg" },
+        ]
+        /* id 39 código bling: 50000 */
+    },
+        {
+        "id": 40,
+        "nome": "Vestido longo",
+        "por": "499,90",
+        "vendido": false,
+        "destaque": false,
+        "novidade": true,
+        "variantes": [
+            { "cor": "Azul Petróleo", "tamanho": "46, 48, 50, 52", "imagem": "fotos/vestido_39.jpg" },
+        ]
+        /* id 40 código bling: 23140 */
+    },
     ];
         
         const ITENS_POR_CARREGAMENTO = 24; 
@@ -1112,6 +1188,9 @@
             produtosFiltradosGlobais.sort(() => Math.random() - 0.5);
             produtosFiltradosGlobais.sort((a, b) => {
                 if (a.vendido !== b.vendido) return a.vendido ? 1 : -1;
+                const novidadeA = a.novidade ? 1 : 0;
+                const novidadeB = b.novidade ? 1 : 0;
+                if (novidadeA !== novidadeB) return novidadeB - novidadeA;
                 const destaqueA = a.destaque ? 1 : 0;
                 const destaqueB = b.destaque ? 1 : 0;
                 return destaqueB - destaqueA;
@@ -1230,6 +1309,7 @@
                 card.innerHTML = `
                     <div class="product-image-container">
                         ${p.destaque ? '<span class="badge badge-destaque">⭐ DESTAQUE</span>' : ''}
+                        ${p.novidade ? '<span class="badge badge-novidade">✨ Novidade</span>' : ''}
                         ${p.vendido ? `<span class="badge badge-sold" style="${p.destaque ? 'top: 42px;' : ''}">ESGOTADO</span>` : ''}
                         ${p.desconto > 0 && !p.vendido ? `<span class="badge badge-discount">-${p.desconto}%</span>` : ''}
                         
