@@ -1248,7 +1248,7 @@
 
             const btnCompra = document.getElementById(`btn-compra-${produtoId}`);
             if(btnCompra) {
-                const mensagemWhats = encodeURIComponent(`Olá, UNNA! Amei o "${produto.nome}" na cor ${corObj.corOriginal} (Tamanhos disponíveis: ${stringTamanhos}). Gostaria de verificar a disponibilidade para compra!`);
+                const mensagemWhats = encodeURIComponent(`Olá, UNNA! Amei o "${produto.nome}" na cor ${corObj.corOriginal} (Tamanhos disponíveis: ${stringTamanhos}) do catálogo de vestidos de festa. Gostaria de verificar a disponibilidade para compra!`);
                 btnCompra.href = `https://wa.me/${WHATSAPP_NUMERO}?text=${mensagemWhats}`;
             }
         }
@@ -1300,7 +1300,7 @@
                     indicadoresHtml += `</div>`;
                 }
 
-                const mensagemWhats = encodeURIComponent(`Olá, UNNA! Amei o "${p.nome}" na cor ${corObj.corOriginal} (Tamanhos disponíveis: ${stringTamanhosAtual}). Gostaria de verificar a disponibilidade para compra!`);
+                const mensagemWhats = encodeURIComponent(`Olá, UNNA! Amei o "${p.nome}" na cor ${corObj.corOriginal} (Tamanhos disponíveis: ${stringTamanhosAtual}) do catálogo de vestidos de festa. Gostaria de verificar a disponibilidade para compra!`);
                 const linkWhats = `https://wa.me/${WHATSAPP_NUMERO}?text=${mensagemWhats}`;
 
                 const card = document.createElement('div');
@@ -1465,7 +1465,7 @@
                 <div class="modal-price-avista">R$ ${calcularDesconto(produto.por)} à vista (10% OFF)</div>
             `;
 
-            const mensagemWhats = encodeURIComponent(`Olá, UNNA! Amei o "${produto.nome}" na cor ${corObj.corOriginal} (Tamanhos disponíveis: ${stringTamanhosAtual}). Gostaria de verificar a disponibilidade para compra!`);
+            const mensagemWhats = encodeURIComponent(`Olá, UNNA! Amei o "${produto.nome}" na cor ${corObj.corOriginal} (Tamanhos disponíveis: ${stringTamanhosAtual}) do catálogo de vestidos de festa. Gostaria de verificar a disponibilidade para compra!`);
             const linkWhats = `https://wa.me/${WHATSAPP_NUMERO}?text=${mensagemWhats}`;
 
            if (produto.vendido) {
