@@ -41,7 +41,7 @@
             background-color: var(--primary-color);
             color: #ffffff;
             padding: 10px 0;
-            font-size: 11px;
+            font-size: 8px;
             letter-spacing: 0.15em;
             font-weight: 400;
             text-transform: uppercase;
@@ -169,7 +169,7 @@
             border: 1px solid var(--border-color);
             border-radius: 0px;
             font-family: 'Inter', sans-serif;
-            font-size: 13px;
+            font-size: 10px;
             outline: none;
             transition: var(--transition);
             background-color: #ffffff;
@@ -204,7 +204,7 @@
             padding: 12px 24px;
             cursor: pointer;
             font-family: 'Inter', sans-serif;
-            font-size: 12px;
+            font-size: 10px;
             font-weight: 400;
             color: var(--text-muted);
             transition: var(--transition);
@@ -242,7 +242,7 @@
             border: 1px solid var(--border-color);
             padding: 8px 20px;
             font-family: 'Inter', sans-serif;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 400;
             color: var(--text-muted);
             cursor: pointer;
@@ -277,7 +277,7 @@
         }
 
         .size-label {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -297,7 +297,7 @@
             border: 1px solid var(--border-color);
             padding: 6px 14px;
             font-family: 'Inter', sans-serif;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 400;
             color: var(--text-muted);
             cursor: pointer;
@@ -323,7 +323,7 @@
         }
 
         .results-counter {
-            font-size: 12px;
+            font-size: 9px;
             color: var(--text-muted);
             font-weight: 300;
             letter-spacing: 0.03em;
@@ -494,7 +494,7 @@
         }
 
         .product-category {
-            font-size: 10px;
+            font-size: 9px;
             text-transform: uppercase;
             letter-spacing: 0.12em;
             color: var(--text-muted);
@@ -504,7 +504,7 @@
 
         .product-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
+            font-size: 21px;
             font-weight: 400;
             color: var(--text-main);
             margin-bottom: 8px;
@@ -513,7 +513,7 @@
         }
 
         .product-all-sizes {
-            font-size: 14px;
+            font-size: 12px;
             color: var(--primary-color);
             margin-bottom: 4px;
             font-weight: 700;
@@ -522,7 +522,7 @@
         }
 
         .product-all-colors {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
             margin-bottom: 12px;
             font-weight: 500;
@@ -578,47 +578,115 @@
         }
 
         .destaque-tamanho {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 800;
             color: #000000;
         }
 
+        /* --- CONTAINER DE PREÇOS (Estilo Grife Premium) --- */
         .product-price-container {
             margin-top: auto;
             margin-bottom: 20px;
             display: flex;
             flex-direction: column;
+            gap: 8px;
+            /* Respiro elegante entre as formas de pagamento */
+            border-top: 1px solid var(--border-color);
+            /* Linha divisória sutil que emoldura o preço */
+            padding-top: 16px;
+        }
+
+        /* Valor base sutil e elegante */
+        .price-total {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
+        /* Destaque do Parcelamento com números imponentes */
+        .price-installments {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-color);
+            letter-spacing: -0.01em;
+            display: flex;
+            flex-direction: column;
+            /* O próprio CSS joga o "sem juros" para baixo perfeitamente */
+            gap: 3px;
+        }
+
+        /* Micro-cópia em caixa alta (típico de marcas de luxo) */
+        .price-installments .price-small {
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            /* Força o "SEM JUROS" ficar maiúsculo */
+            letter-spacing: 0.08em;
+        }
+
+        /* PIX com verde sofisticado e perfeitamente alinhado */
+        .price-pix {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1b4b27;
+            /* Verde escuro e fechado (mais chique) */
+            display: flex;
+            align-items: baseline;
             gap: 4px;
         }
 
-        .product-price-box {
-            display: flex;
-            align-items: baseline;
-            gap: 12px;
+        .price-pix .price-small {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #2e7d32;
         }
 
-        .price-old {
-            font-size: 15px;
-            color: #8a1f1a;
-            text-decoration: line-through;
-            text-decoration-color: #8a1f1a;
-            text-decoration-thickness: 2px;
-            font-weight: 500;
-            opacity: 0.85;
+        /* --- PREÇOS NO MODAL DE ZOOM (Acompanhando a nova identidade) --- */
+        .modal-price-total {
+            font-size: 14px;
+            color: #a0a0a0;
+            margin-bottom: 8px;
+            font-weight: 300;
+            text-align: center;
         }
 
-        .price-current {
+        .modal-price-installments {
             font-size: 22px;
             font-weight: 600;
-            color: var(--text-main);
-            letter-spacing: 0.01em;
+            color: #ffffff;
+            margin-bottom: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
         }
 
-        .price-avista {
-            font-size: 14px;
-            font-weight: 700;
-            color: #2e7d32;
-            letter-spacing: 0.02em;
+        .modal-price-installments .price-small {
+            font-size: 11px;
+            font-weight: 400;
+            color: #cccccc;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .modal-price-pix {
+            font-size: 17px;
+            font-weight: 500;
+            color: #4caf50;
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .modal-price-pix .price-small {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
         }
 
         @keyframes shimmer-effect {
@@ -633,7 +701,9 @@
 
         .btn-whatsapp {
             position: relative;
-            display: inline-block;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
             background-color: #000000;
             color: #ffffff;
             text-decoration: none;
@@ -840,29 +910,7 @@
             width: 100%;
         }
 
-        .modal-price-old {
-            font-size: 16px;
-            color: #ff857a;
-            text-decoration: line-through;
-            text-decoration-color: #ff857a;
-            text-decoration-thickness: 2px;
-            font-weight: 500;
-        }
 
-        .modal-price-current {
-            font-size: 26px;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: 0.02em;
-        }
-
-        .modal-price-avista {
-            font-size: 18px;
-            font-weight: 600;
-            color: #4caf50;
-            margin-top: 4px;
-            letter-spacing: 0.02em;
-        }
 
         .no-results {
             grid-column: 1 / -1;
@@ -988,11 +1036,12 @@
             }
 
             .results-info-row {
-                margin-bottom: 8px;
+                margin-top: 15px;
+                margin-bottom: 12px;
             }
 
             .results-counter {
-                font-size: 12px;
+                font-size: 11px;
             }
         }
 
@@ -1033,6 +1082,25 @@
 
             .destaque-tamanho {
                 font-size: 15px;
+            }
+
+            /* Ajuste fino da área de preços no celular */
+            .product-price-container {
+                padding-top: 10px;
+                gap: 6px;
+            }
+
+            .price-installments {
+                font-size: 16px;
+                /* Tamanho proporcional para tela de celular */
+            }
+
+            .price-pix {
+                font-size: 14px;
+            }
+
+            .price-pix .price-small {
+                font-size: 9px;
             }
 
             .price-current {
@@ -1212,9 +1280,9 @@
 
     <div class="marquee-bar">
         <div class="marquee-content">
-            <span>✨ CATÁLOGO DE VESTIDOS DE FESTA - UNNA ✨</span>
-            <span>✨ CATÁLOGO DE VESTIDOS DE FESTA - UNNA ✨</span>
-            <span>✨ CLIQUE NO BOTÃO DE COMPRAR PARA GARANTIR O SEU LOOK PELO WHATSAPP! ✨</span>
+            <span>• CATÁLOGO DE VESTIDOS DE FESTA - UNNA •</span>
+            <span>• CATÁLOGO DE VESTIDOS DE FESTA - UNNA •</span>
+            <span>• CLIQUE NO BOTÃO DE COMPRAR PARA GARANTIR O SEU LOOK PELO WHATSAPP! •</span>
         </div>
     </div>
 
@@ -1727,6 +1795,17 @@
             let valorInteiro = Math.floor(valorComDesconto);
             return valorInteiro + ',90';
         }
+        function calcularParcelamento(valorStr) {
+            let valorNum = parseFloat(valorStr.replace('.', '').replace(',', '.'));
+            let parcelaMinima = 89.90;
+
+            let maxParcelas = Math.floor(valorNum / parcelaMinima);
+            if (maxParcelas < 1) maxParcelas = 1;
+
+            let valorParcela = (valorNum / maxParcelas).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            return `até ${maxParcelas}x de R$ ${valorParcela} <span class="price-small">sem juros</span>`;
+        }
 
         function formatarTamanhosOrdenados(listaItens) {
             let itensExpandidos = [];
@@ -1792,6 +1871,7 @@
             atualizarFiltrosERenderizar();
             configurarObservadorRolagem();
         });
+
 
         function obterCategoriasUnicas() {
             const listasCategorias = ['Todos'];
@@ -2126,22 +2206,18 @@
                         
                         <div class="product-price-container">
                             ${p.precos_separados ?
-                        `<div style="font-size:15px; color:var(--text-muted); margin-bottom:6px; line-height: 1.4;">
+                        `<div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; line-height: 1.4; border-bottom: 1px dashed var(--border-color); padding-bottom: 8px;">
                                     ${p.precos_separados.map(ps => `${ps.peca}: <b style="color:var(--text-main)">R$ ${ps.valor}</b>`).join(' <br> ')}
                                 </div>
-                                <div class="product-price-box">
-                                    <span class="price-current" style="font-size:20px;">Look Completo: R$ ${p.por}</span>
-                                </div>`
+                                <div class="price-total">Look Completo: R$ ${p.por}</div>`
                         :
-                        `<div class="product-price-box">
-                                    ${p.de && p.de !== '—' ? `<span class="price-old">R$ ${p.de}</span>` : ''}
-                                    <span class="price-current">R$ ${p.por}</span>
-                                </div>`
+                        `<div class="price-total">R$ ${p.por}</div>`
                     }
-                            <div class="price-avista">
-                                R$ ${calcularDesconto(p.por)} à vista (10% OFF)
-                            </div>
+                            <div class="price-installments">${calcularParcelamento(p.por)}</div>
+                            <div class="price-pix">R$ ${calcularDesconto(p.por)} <span class="price-small">NO PIX (10% OFF)</span></div>
                         </div>
+                        
+                       
                         ${p.vendido ?
                         '<button class="btn-whatsapp btn-sold" disabled>Indisponível</button>' :
                         `<a id="btn-compra-${p.id}" href="${linkWhats}" target="_blank" class="btn-whatsapp">Comprar</a>`
@@ -2243,20 +2319,19 @@
             modalImg.src = fotoAtual;
             modalCaption.textContent = `${produto.nome} - ${corObj.corOriginal} (Tam: ${stringTamanhosAtual})`;
 
-            modalPrices.innerHTML = produto.precos_separados ? `
-                <div style="font-size:15px; color:#ddd; margin-bottom:8px; text-align:center;">
-                    ${produto.precos_separados.map(ps => `${ps.peca}: <b>R$ ${ps.valor}</b>`).join(' &nbsp;|&nbsp; ')}
+            modalPrices.innerHTML = `
+                <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    ${produto.precos_separados ? `
+                    <div style="font-size:13px; color:#aaa; margin-bottom:10px; text-align:center; border-bottom: 1px dashed #555; padding-bottom: 8px; width: 100%;">
+                        ${produto.precos_separados.map(ps => `${ps.peca}: <b style="color:#fff">R$ ${ps.valor}</b>`).join(' &nbsp;|&nbsp; ')}
+                    </div>
+                    <div class="modal-price-total">Look Completo: R$ ${produto.por}</div>
+                    ` : `
+                    <div class="modal-price-total">R$ ${produto.por}</div>
+                    `}
+                    <div class="modal-price-installments">${calcularParcelamento(produto.por)}</div>
+                    <div class="modal-price-pix">R$ ${calcularDesconto(produto.por)} <span class="price-small">NO PIX (10% OFF)</span></div>
                 </div>
-                <div style="display: flex; align-items: baseline; gap: 12px;">
-                    <span class="modal-price-current">Look Completo: R$ ${produto.por}</span>
-                </div>
-                <div class="modal-price-avista">R$ ${calcularDesconto(produto.por)} à vista (10% OFF)</div>
-            ` : `
-                <div style="display: flex; align-items: baseline; gap: 12px;">
-                    ${produto.de && produto.de !== '—' ? `<span class="modal-price-old">R$ ${produto.de}</span>` : ''}
-                    <span class="modal-price-current">R$ ${produto.por}</span>
-                </div>
-                <div class="modal-price-avista">R$ ${calcularDesconto(produto.por)} à vista (10% OFF)</div>
             `;
 
             const mensagemWhats = encodeURIComponent(`Olá, UNNA! Amei o "${produto.nome}" na cor ${corObj.corOriginal} (Tamanhos disponíveis: ${stringTamanhosAtual}) do catálogo de vestidos de festa. Gostaria de verificar a disponibilidade para compra!`);
